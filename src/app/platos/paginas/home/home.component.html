@@ -1,4 +1,54 @@
-<p>home works!</p>
+<p>
+    <mat-toolbar>
+      <span>Home</span>
+
+      <span class="spacer"></span>
+      <form (ngSubmit)="salir()">
+        <button mat-raised-button color="basic"
+              type="submit"
+                >
+              logout
+        </button>
+      </form>
+    </mat-toolbar>
+</p>
+
+  
+    <div class="container text-center">
+        <h1>Menu</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div>
+        <mat-form-field  appearance="fill">
+          <mat-label>Buscar</mat-label>
+          <input type="text"
+                 matInput
+                 [(ngModel)]="termino"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            
+          </mat-autocomplete>
+        </mat-form-field>
+    </div>
+
+    <div class="album  py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
 
 
-<mat-sidenav-container></mat-sidenav-container>
+
+
+
+  

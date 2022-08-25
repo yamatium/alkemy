@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule,  } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 
 import { LoginComponent } from './auth/pages/login/login.component';
-import { HomeComponent } from './platos/paginas/home/home.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 
@@ -15,7 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    loadChildren: () => import('./platos/platos.module').then( m => m.PlatosModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path:'login',

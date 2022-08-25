@@ -1,5 +1,54 @@
-<p>login works!</p>
+ <mat-card>
+    <mat-card-title>Login</mat-card-title>
+<mat-card-content>
+<form  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario"  >
+  
+    <mat-form-field>
+      <input type="text" matInput placeholder="Email" 
+             formControlName="email">
+    </mat-form-field>
+  
+  
+    <mat-form-field>
+      <input type="text" matInput placeholder="Password" 
+             formControlName="contraseña">
+      
+    </mat-form-field>
+  
 
+  <div class="button">
+    <button type="submit" 
+            mat-raised-button color="primary"
+            [disabled]="miFormulario.invalid"
+            >Enviar</button>
+  </div>
+
+  
+  <div>
+    <span class="span" 
+          *ngIf="campoEsValido('email')">
+       Por Favor llene los campos</span>
+    
+    
+
+  </div>
+  
+
+</form>
+</mat-card-content>
+</mat-card>  
+
+
+
+  
+  
+<span>Value</span>
+<pre> {{ miFormulario.value | json }}</pre>
+
+<span>valid</span>
+<pre> {{ miFormulario.valid }}</pre>
+
+ 
 
 
 

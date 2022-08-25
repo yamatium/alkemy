@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { AuthModule } from './auth/auth.module';
+
+
+
+import { MaterialsModule } from './materials/materials.module';
+import { PlatosModule } from './platos/platos.module';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +24,11 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MaterialsModule,
+    AuthModule,
+    PlatosModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
