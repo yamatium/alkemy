@@ -8,8 +8,8 @@ import { Platos } from '../interface/menu.interface';
 })
 export class ApiService {
 
-  private _apiKey: string = 'cf85651e1dd646379bc43dbc9a058352';
-  private _baseUrl: string = 'https://api.spoonacular.com/recipes/complexSearch';
+  _apiKey: string = 'cf85651e1dd646379bc43dbc9a058352';
+  _baseUrl: string = 'https://api.spoonacular.com/recipes/complexSearch';
   private _platosElejidos: any[] = [];
   private _vegano:number = 0;
   private _Novegano: number = 0;
@@ -21,4 +21,9 @@ export class ApiService {
   getPlatos( termino: string ): Observable<Platos> {
     return this.http.get<Platos>(`${this._baseUrl}/?query=${termino}&apiKey=${this._apiKey}&addRecipeInformation=true`)
   }
+
+  //getPlatos2(  ): Observable<Platos> {
+  //  return this.http.get<Platos>(`${this._baseUrl}/?query=chicken&apiKey=${this._apiKey}&addRecipeInformation=true`)
+  // }
+
 }
