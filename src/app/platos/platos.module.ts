@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { PlatosRoutingModule } from './platos-routing.module';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -31,6 +31,7 @@ import { PlatosRoutingModule } from './platos-routing.module';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     FormsModule,
     PlatosRoutingModule
     
