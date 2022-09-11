@@ -1,0 +1,15 @@
+<mat-card style="width: 100%; height:100%">
+    <mat-card-header style="width:100% ; margin:1 ;">
+      <mat-card-title >{{ plato.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src= {{plato.image}}>
+    
+    <mat-card-actions>
+      <button mat-raised-button class="btn btn-sm btn-outline-dark" (click)="openDialog()" type="button">Ver detalles</button>
+
+      <button  (click)="evento()" type="button " class=" btn-sm float-end btn btn-success">
+              {{ (condicion)? 'Agregar a su orden': 'Borrar de su orden' }}
+      </button>
+      
+    </mat-card-actions>
+  </mat-card>

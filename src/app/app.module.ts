@@ -10,8 +10,6 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AuthModule } from './auth/auth.module';
 
 
-
-import { MaterialsModule } from './materials/materials.module';
 import { PlatosModule } from './platos/platos.module';
 
 
@@ -24,7 +22,6 @@ import { PlatosModule } from './platos/platos.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialsModule,
     AuthModule,
     PlatosModule,
     HttpClientModule

@@ -1,81 +1,49 @@
-<p>
-    <mat-toolbar>
-      <span>Home</span>
+<app-navbar></app-navbar>
 
-      <span class="spacer"></span>
-      <form (ngSubmit)="salir()">
-        <button mat-raised-button color="basic"
-              type="submit"
-                >
-              logout
-        </button>
-      </form>
-    </mat-toolbar>
-</p>
-
- <h2>poner fondo transparente, agregar caja dinamica de favoritos, y un ngIF si no se busco nada, arreglar por que desaparece el toolbar si no se busca nada </h2>
+ 
   
-    <div class="container text-center">
-        <h1>Buscar</h1>
-        <mat-divider></mat-divider>
-    </div>
 
-    
-    <div class="container text-center">
-      <form (ngSubmit)="enviar( termino )" #termino="ngForm" class="row g-3" >
-        <div class="col-9">
-          <input type="text" 
-                 class="form-control"
-                 autocomplete="off"
-                 ngModel
-                 name="nombres"
-                 placeholder="buscar...">
-        </div>
-        
-        <div class="col-auto">
-          <button class="btn btn-outline-primary bi bi-search" type="submit"></button>
-        </div>
-      </form>
-      
-    </div>
-
-  
-      <h1>Menu</h1>
-      <div class="album py-5 bg-light">
-        <div class="container-sm">
-          <div class="row">
-              <ul class="col-md-3" *ngFor="let plato of data.results" >
-                <li   class=" mb-4 box-shadow">
-                  <mat-card class="">
-                    <mat-card-header>
-                      <mat-card-title>{{ plato.title }}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src= {{plato.image}}>
-                    <mat-card-content>
-                      <p>
-                         precio: {{ plato.pricePerServing }} $
-                         <br>
-                         tiempo de preparacion: {{ plato.readyInMinutes }} minutos
-                         <br>
-                         health score: {{ plato.healthScore }}
-                         <br>
-                         Es vegano: {{ plato.vegan}} 
-
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>agregar al pedido</button>
-                      
-                    </mat-card-actions>
-                  </mat-card>
-                </li>
-              </ul>
-            
+ <ng-container *ngIf="platosElejidos.length > 0 ; else menuvacio" class="pt-5 text-center container">
+  >
+    <div class="row py-lg-5">
+        <div>
+             <h1 style="text-align:center ;">Su Orden</h1>
+        </div >
+        <div class="album py-5 ">
+          <div class="container" style="text-align:center ;">
+            <ul>
+              <li class="list-group-item list-group-item-dark"> Total a pagar: {{ preciototal | currency}}</li>
+              <li class="list-group-item list-group-item-dark">  Tiempo de cocina: {{ tiempo | number: '1.1-2'}} minutos </li>
+              <li class="list-group-item list-group-item-dark"> Su HealthScore: {{ health | number:'1.1-2'}} puntos </li>
+            </ul>
           </div>
         </div>
-      </div>
+        <div class="album py-5 ">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="col" *ngFor="let plato of platosElejidos">
+                  <app-carta [plato]="plato" (boton)="borrar($event)" [condicion]="false"></app-carta>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </div>
     
+  </ng-container>
+  <ng-template #menuvacio class="row ">
+    <div class="container text-center">
+     <div class="album py-5  ">
+       <h2 class=".text-dark"> Aqui no hay nada</h2>
+       <br>
+       <h2 class=".text-dark"> Por favor agrege su orden desde la pestaña Buscar</h2>
 
+     </div>
+   </div>
+
+  </ng-template>
+
+    
 
     
     

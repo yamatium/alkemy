@@ -7,10 +7,9 @@ import { HomeComponent } from './paginas/home/home.component';
 const rutas: Routes = [
   {
     path: '',
-    component: HomeComponent,
     children: [
       {path:'menu',component: MenuComponent},
-      {path: '**', redirectTo: 'home'}
+      {path: 'home', component: HomeComponent}
     ]
   }
 ]

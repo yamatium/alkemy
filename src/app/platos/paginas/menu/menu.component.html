@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<h1> arreglar la imagen de la tarjeta  </h1>
+<div class="container text-center">
+  <h1>Buscar</h1>
+  <mat-divider></mat-divider>
+</div>
+
+
+<div class="container text-center">
+<form  class="row g-3" >
+  <div class="input-group col-9">
+    <input type="text" 
+           class="form-control"
+           [formControl]="termino"
+           (keyup.enter)="enviar()"
+           (input)="tecla()"
+           placeholder="Por favor escriba su orden aqui ">
+           <button class="btn btn-outline-primary bi bi-search" type="button" (click)="enviar()"></button>
+  </div>
+    
+</form>
+
+</div>
+
+
+<h1 class="text-center">Menu</h1>
+<div class="album py-5 ">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+      <div class="col" *ngFor="let plato of data.results">
+        <app-carta [plato]="plato" (boton)="agregar($event)" [condicion]="true"></app-carta>
+      </div>
+    </div>
+  </div>
+</div>

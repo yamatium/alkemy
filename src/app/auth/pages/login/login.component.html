@@ -1,26 +1,41 @@
+ 
+ <img src="https://www.alkemy.org/logo512.png"
+      width="250"
+      height="250">
+ 
  <mat-card>
     <mat-card-title>Login</mat-card-title>
 <mat-card-content>
 <form  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario"  >
   
-    <mat-form-field>
-      <input type="text" matInput placeholder="Email" 
-             formControlName="email">
+    <mat-form-field color="accent">
+      <input type="text" 
+             matInput placeholder="Email" 
+             formControlName="email"
+             spellcheck=false>
     </mat-form-field>
   
   
-    <mat-form-field>
-      <input type="text" matInput placeholder="Password" 
-             formControlName="contraseña">
+    <mat-form-field color="accent">
+      <input type="password" 
+             matInput placeholder="Contraseña" 
+             formControlName="contraseña"
+             spellcheck=false>
       
     </mat-form-field>
   
 
   <div class="button">
     <button type="submit" 
-            mat-raised-button color="primary"
-            [disabled]="miFormulario.invalid"
-            >Enviar</button>
+            class="btn btn-primary btn-lg w-100"
+            [disabled]="click"
+            >
+        <span class="spinner-border spinner-border-sm"
+              role="status" 
+              aria-hidden="true"
+              *ngIf="click"></span>
+            
+            Enviar</button>
   </div>
 
   
@@ -28,10 +43,8 @@
     <span class="span" 
           *ngIf="campoEsValido('email')">
        Por Favor llene los campos</span>
-    
-    
-
   </div>
+  
   
 
 </form>
@@ -39,14 +52,8 @@
 </mat-card>  
 
 
-
   
-  
-<span>Value</span>
-<pre> {{ miFormulario.value | json }}</pre>
-
-<span>valid</span>
-<pre> {{ miFormulario.valid }}</pre>
+ 
 
  
 
