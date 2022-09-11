@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     contraseña: ['', [Validators.required, Validators.minLength(4)]]
   })
 
+  click: boolean = false;
 
   constructor( private fb:     FormBuilder,
                private router: Router,
@@ -33,29 +34,33 @@ export class LoginComponent implements OnInit {
 
   guardar() {
 
-    //hacer un service e injectarlo para comunicarse con la api
-    //realizar  peticion post a la api para autenticarlo cuando aprete el boton y darle un token
-    // mostrar al usuario que se esta procesando la peticion, no permitiendo que vuelva a tocar el boton login hasta que haya una respuesta
-
-    // en caso de un error de la api, mostrar una alerta con sweet alert , mientras que si es valido debera redirigir al home y guardar el token en 
-    //local storage.   hacer un boton de logout que borre el token del localstorage
-
-
-    console.log(this.miFormulario.value);
-
     const {email, contraseña} = this.miFormulario.value
+
+    if(this.miFormulario.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Datos incorrectos',
+        footer: 'Por favor revise que sus datos sean correctos'})
+      return;
+    }
+    this.click=true;
 
 
     this.authService.login(email, contraseña )
-      .subscribe( resp => {
-        console.log(resp); 
+      .subscribe( resp => { 
         localStorage.setItem('token', JSON.stringify(resp))
-
         if ('token'){
-          this.router.navigate(['./home']) 
-        }
-        
-      })
+          this.router.navigate(['./platos/home']) 
+        } 
+        }, err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Datos incorrectos',
+            footer: 'Por favor revise que sus datos sean correctos'})
+          this.click=false;
+        })
 
     
 

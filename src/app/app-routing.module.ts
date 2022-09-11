@@ -9,19 +9,20 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
-    path: '404',
-    component: ErrorPageComponent
+    path:'login',
+    component:LoginComponent
 
   },
   {
-    path: 'home',
+    path: 'platos',
     loadChildren: () => import('./platos/platos.module').then( m => m.PlatosModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
   {
-    path:'login',
-    component:LoginComponent
+    
+    path: '404',
+    component: ErrorPageComponent
   },
   {
     path:'**',
