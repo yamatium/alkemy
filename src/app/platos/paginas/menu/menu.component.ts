@@ -14,7 +14,7 @@ import { Subject, debounceTime } from 'rxjs';
 export class MenuComponent  implements OnInit{
   data!: Platos;
 
-  termino = new FormControl('', [Validators.minLength(2)]);
+  termino = new FormControl('', [Validators.minLength(3)]);
 
   get vegano() : number {
     return this.menu.vegano

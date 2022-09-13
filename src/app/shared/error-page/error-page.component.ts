@@ -15,7 +15,7 @@ export class ErrorPageComponent implements OnInit {
       if(localStorage.getItem('token')){
         this.router.navigateByUrl('/platos/home');
       } else {this.router.navigateByUrl('/login');}
-    }, 2000);
+    }, 3000);
   }
 
   get token() : boolean {
