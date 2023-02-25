@@ -1,5 +1,7 @@
 # Challenge
 
+//los datos del login son : email: challenge@alkemy.org ;   password : react
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
 
 ## Development server
